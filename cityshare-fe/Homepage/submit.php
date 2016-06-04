@@ -15,12 +15,12 @@ define('GW_MAXFILESIZE', '66000000');
 if (isset($_POST['submit'])) {
 
     // Grab the data from the POST
-    $item = $_POST['item']
+    $item = $_POST['item'];
     $cityName = $_POST['cityName'];
     $contact = $_POST['contact'];
     $quanity = $_POST['quanity'];
     $description = $_POST['description'];
-    $image = $_FILES['image']['cityName'];
+    $image = $_FILES['image'];
 
     $image_type = $_FILES['image']['type'];
     $image_size = $_FILES['image']['size'];
@@ -33,12 +33,11 @@ if (isset($_POST['submit'])) {
         ) {
 
             if (1 == 1) {
-
-                $target = GW_UPLOADPATH . $image;
-
+                $target = GW_UPLOADPATH . $_FILES['image']['name'];
+                
                 // Connect to the database
 
-                if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $target )) {
 
                     $cityName = $_POST['cityName'];
 
@@ -47,31 +46,31 @@ if (isset($_POST['submit'])) {
                     if (!empty($cityName) && !empty($description)) {
 
 
-                        $dbc = new PDO('mysql:host=localhost:3306;dbname=cityshare', 'root', '');
+                        $dbc = new PDO('mysql:host=localhost;dbname=cityshare', 'root', '');
 
                         // Write the data to the database
 
-                        $query = "INSERT INTO resource VALUES (0, :item, :cityName, :contact, :quanity, :description, :image)";
+                        $query = "INSERT INTO resource (item, cityName, contact, quanity, description, image) VALUES (:item, :cityName, :contact, :quanity, :description, :image)";
 
                         $stmt = $dbc->prepare($query);
 
                         $stmt->execute(
-
                             array(
-                                'item' => $item,
-                                'cityName' => $cityName,
-                                'contact' => $contact,
-                                'quanity' => $quanity,
-                                'description' => $description,
-                                'image' => $image,
+                                ':item' => $item,
+                                ':cityName' => $cityName,
+                                ':contact' => $contact,
+                                ':quanity' => $quanity,
+                                ':description' => $description,
+                                ':image' => $target
                             ));
 
+                        
                         // Confirm success with the user
                         echo '<p>Thanks for submiting!</p>';
-                        echo '<p><strong>Item:</strong> ' . $item . '<br />';
-                        echo '<p><strong>City name:</strong> ' . $cityName . '<br />';
+                        echo '<p><strong>Item:</strong> ' . $item . '</p>';
+                        echo '<p><strong>City name:</strong> ' . $cityName . '</p>';
                         echo '<strong>Contact:</strong> ' . $contact . '</p>';
-                        echo '<p><strong>Quanity:</strong> ' . $quanity . '<br />';
+                        echo '<p><strong>Quanity:</strong> ' . $quanity . '</p>';
                         echo '<strong>Description:</strong> ' . $description . '</p>';
                         echo '<p><a href="index.html">&lt;&lt; Back to home page.</a></p>';
                         // Clear the data to clear the form
