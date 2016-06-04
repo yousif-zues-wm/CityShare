@@ -1,5 +1,5 @@
 <?php
-    require_once("connect.php");
+    require_once("connectvars.php");
     $message ="";
     $cityName = 'placeholder="City Name"';
     $lastName = 'placeholder="Last Name"';
@@ -12,14 +12,16 @@
 
         if($_POST['cityName'] && $_POST['lastName'] && $_POST['password'] && $_POST['email'])
         {
-            $sql = "SELECT * FROM users WHERE email = :email";
-            $res = $dbh->prepare($sql);
+            $query = "SELECT * FROM users WHERE email = :email";
+            $res = $dbc->prepare('$query');
             $res -> execute(
-                array('email'=>$_POST['email']));
+                array( 
+                    'email'=> $_POST['email'] 
+                    ));
             $count = $res->rowCount();
             if($count == 0)
             {
-                $stmt = $dbh->prepare('INSERT INTO cityName (cityName, email, created) VALUES (:cityName, :email, NOW())');
+                $stmt = $dbc->prepare('INSERT INTO cityName (cityName, email, created) VALUES (:cityName, :email, NOW())');
                 $result = $stmt->execute(
                     array(
                         'cityName'=>$_POST['cityName'],
@@ -27,8 +29,8 @@
 
                     )
                 );
-                $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
-                $res = $dbh->prepare($sql);
+                $query = "SELECT * FROM users WHERE email = :email AND password = :password";
+                $res = $dbc->prepare($query);
                 $res -> execute(
                     array(
                         'email'=>$_POST['email'],
@@ -156,8 +158,8 @@
                 <form name="addUser" method = "post" class="form-signin" action="<?= $_SERVER['PHP_SELF']; ?>">
                     <span id="reauth-email" class="reauth-email"></span>
                     <div style="width: 50%; float: left; padding-right: 2%">
-                        <input type="text" class="form-control, inputEmail" name="cityName" <?= $firstName ?> required autofocus>
-                        <input type="text" class="form-control, inputEmail" name="lastName" <?= $lastName ?> required>
+                        <input type="text" class="form-control, inputEmail" name="cityName" <?php  $firstName ?> required autofocus>
+                        <input type="text" class="form-control, inputEmail" name="lastName" <?php  $lastName ?> required>
                         <input type="email" class="form-control, inputEmail" name="email" placeholder="Email Address" required>
                     </div>
 
