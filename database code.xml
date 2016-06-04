@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<resultset statement="SELECT * FROM cityshare.resource
+LIMIT 0, 1000
+"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+</resultset>
