@@ -1,3 +1,36 @@
+<?php
+    require_once("connectvars.php");
+
+    if(@$_POST['addProduct'] && $currentUser3 != 1)
+    {
+        $productId = $_POST['addProduct'];
+        $sql = "SELECT * FROM orders WHERE userId = :userId AND productId = :productId";
+        $res = $dbh->prepare($sql);
+        $res -> execute(
+            array(
+                'userId'=>$currentUser3,
+                'productId'=>$productId
+            )
+        );
+        $count = $res->rowCount();
+
+        if($count == 0)
+        {
+            $sql = "INSERT INTO orders (productId, userId, quantity) VALUES (:productId, :userId, '1');";
+            $stmt = $dbh -> prepare($sql);
+            $stmt -> execute(
+                array(
+                    'productId'=>$productId,
+                    'userId'=>$currentUser3
+                )
+            );
+        }
+        header("Location: cart.php");
+    }
+
+    else if (@$_POST['addProduct'] && $currentUser3 == 1)
+        header("Location: cart.php");
+?>
 <html>
   <head>
     <title> City Share </title>
@@ -36,7 +69,7 @@
                   <ul class="nav navbar-nav navbar-right">
                       <li class="active" > <a align="right" href="edit.html#" >Edit Items</a></li>
                   </ul>
-                </div><!--/.nav-collapse -->
+                </div>
               </div>
             </nav>
       </div>

@@ -19,7 +19,7 @@ $message = "";
         {
             $result = $res->fetch();
             $cookie_value = $result['userId'];
-            setcookie("user", $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+            setcookie("user", $cookie_value, time() + (86400 * 30), "/"); 
             $currentUser = $_COOKIE['user'];
 
             $sql = "SELECT step FROM users WHERE userId = :userId";
