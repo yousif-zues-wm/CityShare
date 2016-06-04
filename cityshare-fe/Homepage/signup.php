@@ -1,5 +1,5 @@
 <?php
-    require_once("connect.php");
+    require_once("connectvars.php");
     $message ="";
     $firstName = 'placeholder="First Name"';
     $lastName = 'placeholder="Last Name"';
