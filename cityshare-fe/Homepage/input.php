@@ -57,11 +57,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.html">City Share</a>
+                  <a class="navbar-brand" href="home.html">City Share</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Resources</a></li>
+                    <li class="active"><a href="home.html">Resources</a></li>
 
                     <li><a data-toggle="modal" data-target="#myModal">Login</a></li>
 
