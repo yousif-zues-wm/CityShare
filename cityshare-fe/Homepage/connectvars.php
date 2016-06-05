@@ -1,9 +1,13 @@
 <?php
+
+    $hostname = 'localhost';
+    $username = 'root';
+    $password = 'root';
     try
     {
-        $dbc = new PDO('mysql:host=localhost;dbname=cityshare', 'root', '');
+        $dbh = new PDO("mysql:host=$hostname;dbname=cityshare", $username, $password);
 
-        $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch(PDOException $e)
     {
