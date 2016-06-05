@@ -17,6 +17,7 @@ td {
     border-width: 1px 0; /*  1px top & bottom border,  0px left & right */
     border-color: #08b3ff;
     border-style: solid;
+
 }
 table{
   border-top: none;
@@ -27,6 +28,7 @@ thead {
   border-bottom-width: 1px 0; /*  1px top & bottom border,  0px left & right */
   border-bottom-color: #08b3ff;
   border-bottom-style: solid;
+  
 }
 /*tr {
     padding: 1px 0;     /* 10px top & bottom padding, 0px left & right */
