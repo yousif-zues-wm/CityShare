@@ -2,7 +2,6 @@
     require_once("connectvars.php");
     $message ="";
     $cityName = 'placeholder="City Name"';
-    $lastName = 'placeholder="Last Name"';
     $password = 'placeholder="Password"';
     $repeat = 'placeholder="Repeat Password"';
     $email = 'placeholder="Email"';
@@ -10,7 +9,7 @@
     {
         $message ="";
 
-        if($_POST['cityName'] && $_POST['password'] && $_POST['email'])
+        if($_POST['cityName']  && $_POST['password'] && $_POST['email'])
         {
             $query = "SELECT * FROM users WHERE email = :email";
             $res = $dbc->prepare($query);
@@ -23,11 +22,12 @@
             $count = $res->rowCount();
             if($count == 0)
             {
-                $stmt = $dbc->prepare('INSERT INTO users (cityName, email) VALUES (:cityName, :email)');
+                $stmt = $dbc->prepare('INSERT INTO users (cityName, email, password) VALUES (:cityName, :email, :password)');
                 $result = $stmt->execute(
                     array(
                         'cityName'=>$_POST['cityName'],
-                        'email'=>$_POST['email']
+                        'email'=>$_POST['email'],
+                        'password'=>$_POST['password']
                     )
                 );
                 $query = "SELECT * FROM users WHERE email = :email AND password = :password";
