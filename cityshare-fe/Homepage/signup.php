@@ -10,7 +10,7 @@
     {
         $message ="";
 
-        if($_POST['cityName'] && $_POST['lastName'] && $_POST['password'] && $_POST['email'])
+        if($_POST['cityName'] && $_POST['password'] && $_POST['email'])
         {
             $query = "SELECT * FROM users WHERE email = :email";
             $res = $dbc->prepare($query);
@@ -159,8 +159,7 @@
                 <form name="addUser" method = "post" class="form-signin" action="<?= $_SERVER['PHP_SELF']; ?>">
                     <span id="reauth-email" class="reauth-email"></span>
                     <div style="width: 50%; float: left; padding-right: 2%">
-                        <input type="text" class="form-control, inputEmail" name="cityName" <?php  $firstName ?> required autofocus>
-                        <input type="text" class="form-control, inputEmail" name="lastName" <?php  $lastName ?> required>
+                        <input type="text" class="form-control, inputEmail" placeholder="City Name" name="cityName"  <?php  $cityName ?> required autofocus>
                         <input type="email" class="form-control, inputEmail" name="email" placeholder="Email Address" required>
                     </div>
 
