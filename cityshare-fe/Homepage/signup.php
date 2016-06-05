@@ -13,28 +13,29 @@
         if($_POST['cityName'] && $_POST['lastName'] && $_POST['password'] && $_POST['email'])
         {
             $query = "SELECT * FROM users WHERE email = :email";
-            $res = $dbc->prepare('$query');
-            $res -> execute(
+            $res = $dbc->prepare($query);
+
+
+            $res->execute(
                 array( 
                     'email'=> $_POST['email'] 
                     ));
             $count = $res->rowCount();
             if($count == 0)
             {
-                $stmt = $dbc->prepare('INSERT INTO cityName (cityName, email, created) VALUES (:cityName, :email, NOW())');
+                $stmt = $dbc->prepare('INSERT INTO users (cityName, email) VALUES (:cityName, :email)');
                 $result = $stmt->execute(
                     array(
                         'cityName'=>$_POST['cityName'],
-                        'email'=>$_POST['email'],
-
+                        'email'=>$_POST['email']
                     )
                 );
                 $query = "SELECT * FROM users WHERE email = :email AND password = :password";
                 $res = $dbc->prepare($query);
-                $res -> execute(
+                $res->execute(
                     array(
                         'email'=>$_POST['email'],
-                        'cityName'=>$_POST['cityName']
+                        'password'=>$_POST['password']
                     )
                 );
                 $count = $res->rowCount();
