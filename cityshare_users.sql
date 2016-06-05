@@ -18,32 +18,32 @@ USE `cityshare`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `resource`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `resource`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `resource` (
-  `idresource` int(11) NOT NULL AUTO_INCREMENT,
-  `item` varchar(45) DEFAULT NULL,
-  `cityName` varchar(25) DEFAULT NULL,
-  `contact` varchar(30) DEFAULT NULL,
-  `quanity` int(11) DEFAULT NULL,
-  `description` varchar(100) DEFAULT NULL,
-  `image` varchar(300) DEFAULT NULL,
-  PRIMARY KEY (`idresource`)
+CREATE TABLE `users` (
+  `idusers` int(11) NOT NULL AUTO_INCREMENT,
+  `cityName` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `created` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idusers`),
+  UNIQUE KEY `idusers_UNIQUE` (`idusers`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `resource`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `resource` WRITE;
-/*!40000 ALTER TABLE `resource` DISABLE KEYS */;
-INSERT INTO `resource` VALUES (1,'qw','fgh','wer@',1234,'asdf','Array'),(2,'truck','TEMPE','122ssd',3,'dssddc','images/Screen Shot 2016-04-15 at 3.20.55 PM.png'),(3,'truck','TEMPE','122ssd',3,'dssddc','images/Screen Shot 2016-04-15 at 3.20.55 PM.png'),(4,'trucks','phx','ahksbks1',4,'jlnckkb','images/Screen Shot 2016-04-15 at 2.07.31 PM.png');
-/*!40000 ALTER TABLE `resource` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'NIOgge','oasughodfiashldaspidlkhba@tyhgvjbknml.co',NULL,'2016-06-04 17:06:08'),(2,'Tempe','jose@dd.com',NULL,'2016-06-04 17:23:21'),(3,'Tempe1','jos1@dd.com',NULL,'2016-06-04 17:23:38'),(4,'phx','car@sd.com',NULL,'2016-06-04 17:26:31');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

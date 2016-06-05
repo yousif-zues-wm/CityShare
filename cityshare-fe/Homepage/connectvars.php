@@ -1,13 +1,16 @@
 <?php
+<<<<<<< HEAD
+=======
 
     $hostname = 'localhost';
     $username = 'root';
-    $password = '';
+    $password = 'root';
+>>>>>>> origin/Angel
     try
     {
-        $dbh = new PDO("mysql:host=$hostname;dbname=cityshare", $username, $password);
+        $dbc = new PDO('mysql:host=localhost;dbname=cityshare', 'root', '');
 
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch(PDOException $e)
     {

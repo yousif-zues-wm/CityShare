@@ -1,4 +1,6 @@
-Database Name: cityShare
+Database Name: cityshare
+
+Table names: resorces
 
 Front End: Rogelio, Jose Ari
 

@@ -1,13 +1,13 @@
 <?php
-    require_once("connect.php");
+    require_once("connectvars.php");
 $message = "";
     if(@$_POST['signIn'])
     {
         $message = "";
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
-        $res = $dbh->prepare($sql);
+        $query = "SELECT * FROM users WHERE email = :email AND password = :password";
+        $res = $dbh->prepare($query);
         $res -> execute(
             array(
                 'email'=>$email,
@@ -22,8 +22,8 @@ $message = "";
             setcookie("user", $cookie_value, time() + (86400 * 30), "/"); 
             $currentUser = $_COOKIE['user'];
 
-            $sql = "SELECT step FROM users WHERE userId = :userId";
-            $stmt = $dbh->prepare($sql);
+            $query = "SELECT step FROM users WHERE userId = :userId";
+            $stmt = $dbh->prepare($query);
             $stmt -> execute(array("userId"=>$currentUser));
             $result = $stmt->fetch();
             $step = $result['step'];
@@ -34,8 +34,8 @@ $message = "";
         }
         else
         {
-            $sql = "SELECT * FROM users WHERE email = :email";
-            $res = $dbh->prepare($sql);
+            $query = "SELECT * FROM users WHERE email = :email";
+            $res = $dbh->prepare($query);
             $res -> execute(
                 array('email'=>$email));
             $count = $res->rowCount();

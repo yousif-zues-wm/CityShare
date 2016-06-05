@@ -1,0 +1,42 @@
+
+.glyphicon{
+  color: : 1px solid #08b3ff;
+}
+.btn-default{
+    border: 1px solid #08b3ff;
+}
+.table {
+
+  border-style: : solid;
+   border-color:  #08b3ff;
+}
+td {
+    padding: 1px 0;     /* 10px top & bottom padding, 0px left & right */
+    border-width: 1px 0; /*  1px top & bottom border,  0px left & right */
+    border-color: #434343;
+    border-style: solid;
+
+}
+table{
+      border-color: #434343;
+margin-top: 10px;
+  border-top: none;
+}
+th {
+margin-top: 500px;
+}
+thead {
+    border-color: #434343;
+margin-top: 500px;
+  padding: 50px 0;     /* 10px top & bottom padding, 0px left & right */
+  border-bottom-width: 1px 0; /*  1px top & bottom border,  0px left & right */
+  border-bottom-color: #434343;
+  border-bottom-style: solid;
+
+}
+/*tr {
+    padding: 1px 0;     /* 10px top & bottom padding, 0px left & right */
+    /*border-bottom-width: 1px 0; /*  1px top & bottom border,  0px left & right */
+  /*  border-bottom-color: #08b3ff;
+    border-bottom-style: solid;
+} */

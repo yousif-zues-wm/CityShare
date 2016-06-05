@@ -1,8 +1,7 @@
 <?php
-    require_once("connect.php");
+    require_once("connectvars.php");
     $message ="";
-    $firstName = 'placeholder="First Name"';
-    $lastName = 'placeholder="Last Name"';
+    $cityName = 'placeholder="City Name"';
     $password = 'placeholder="Password"';
     $repeat = 'placeholder="Repeat Password"';
     $email = 'placeholder="Email"';
@@ -10,27 +9,30 @@
     {
         $message ="";
 
-        if($_POST['firstName'] && $_POST['lastName'] && $_POST['password'] && $_POST['email'])
+        if($_POST['cityName']  && $_POST['password'] && $_POST['email'])
         {
-            $sql = "SELECT * FROM users WHERE email = :email";
-            $res = $dbh->prepare($sql);
-            $res -> execute(
-                array('email'=>$_POST['email']));
+            $query = "SELECT * FROM users WHERE email = :email";
+            $res = $dbc->prepare($query);
+
+
+            $res->execute(
+                array( 
+                    'email'=> $_POST['email'] 
+                    ));
             $count = $res->rowCount();
             if($count == 0)
             {
-                $stmt = $dbh->prepare('INSERT INTO users (firstName, lastName, email, password, created) VALUES (:firstName, :lastName, :email, :password, NOW())');
+                $stmt = $dbc->prepare('INSERT INTO users (cityName, email, password) VALUES (:cityName, :email, :password)');
                 $result = $stmt->execute(
                     array(
-                        'firstName'=>$_POST['firstName'],
-                        'lastName'=>$_POST['lastName'],
+                        'cityName'=>$_POST['cityName'],
                         'email'=>$_POST['email'],
-                        'password'=>$_POST['password'],
+                        'password'=>$_POST['password']
                     )
                 );
-                $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
-                $res = $dbh->prepare($sql);
-                $res -> execute(
+                $query = "SELECT * FROM users WHERE email = :email AND password = :password";
+                $res = $dbc->prepare($query);
+                $res->execute(
                     array(
                         'email'=>$_POST['email'],
                         'password'=>$_POST['password']
@@ -44,15 +46,12 @@
                     setcookie("user", $cookie_value, time() + (86400 * 30), "/");
                     $currentUser = $_COOKIE['user'];
                 }
-                header("Location: checkout.php");
+                header("Location: edit.php");
             }
             else
             {
                 $message = "That email has already been registered.";
-                $firstName = "value = " . $_POST['firstName'];
-                $lastName = "value = " . $_POST['lastName'];
-                $password = "value = " . $_POST['password'];
-                $repeat = "value = " . $_POST['password'];
+                $cityName = "value = " . $_POST['cityName'];
                 $email = "value = " . $_POST['email'];
             }
         }
@@ -160,8 +159,7 @@
                 <form name="addUser" method = "post" class="form-signin" action="<?= $_SERVER['PHP_SELF']; ?>">
                     <span id="reauth-email" class="reauth-email"></span>
                     <div style="width: 50%; float: left; padding-right: 2%">
-                        <input type="text" class="form-control, inputEmail" name="firstName" <?= $firstName ?> required autofocus>
-                        <input type="text" class="form-control, inputEmail" name="lastName" <?= $lastName ?> required>
+                        <input type="text" class="form-control, inputEmail" placeholder="City Name" name="cityName"  <?php  $cityName ?> required autofocus>
                         <input type="email" class="form-control, inputEmail" name="email" placeholder="Email Address" required>
                     </div>
 
