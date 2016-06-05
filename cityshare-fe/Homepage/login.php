@@ -7,7 +7,7 @@ $message = "";
         $email = $_POST['email'];
         $password = $_POST['password'];
         $query = "SELECT * FROM users WHERE email = :email AND password = :password";
-        $res = $dbh->prepare($query);
+        $res = $dbc->prepare($query);
         $res -> execute(
             array(
                 'email'=>$email,
@@ -114,4 +114,6 @@ $message = "";
         </div>
     </div>
 </body>
+
+
 </html>

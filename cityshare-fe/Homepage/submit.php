@@ -1,10 +1,32 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>CityShare</title>
-    <link rel="stylesheet" href="Assets/BootStrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <title> City Share </title>
+  <link rel="stylesheet" href="Assets/BootStrap/css/bootstrap.min.css">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="Assets/BootStrap/css/input:edit.css">
+  <style>
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+</style>
 </head>
+
 <body>
 
 
@@ -105,6 +127,43 @@ if (isset($_POST['submit'])) {
 ?>
 
 
+
+    <body style="padding-top:70px;">
+      <div class="container">
+        <div class = "row">
+          <nav class="navbar navbar-inverse navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="index.html">City Share</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Resources</a></li>
+
+                    <li><a data-toggle="modal" data-target="#myModal">Login</a></li>
+
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li class="active" > <a align="right" href="edit.html#" >Edit Items</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+      </div>
+      <p>
+    <h1 align="center"> Add Items</h1>
+    </p>
+
+      <div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+           
 <form enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
     <input type="hidden" name="MAX_FILE_SIZE" value="66000000" />
@@ -148,5 +207,12 @@ if (isset($_POST['submit'])) {
     <input type="submit" value="Add" name="submit" />
 
 </form>
+
+        </div>
+    </div>
+        <a id="add_row" class="btn btn-default btn-add">Add Row</a><a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+</div>
+      </div>
+
 
 </html>
