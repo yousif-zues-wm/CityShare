@@ -1,4 +1,11 @@
 <?php
+<<<<<<< HEAD
+=======
+
+    $hostname = 'localhost';
+    $username = 'root';
+    $password = 'root';
+>>>>>>> origin/Angel
     try
     {
         $dbc = new PDO('mysql:host=localhost;dbname=cityshare', 'root', '');
